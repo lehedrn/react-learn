@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>jsx语法</title>
+    <style>
+      .title {
+        background-color: orange;
+        width: 300px;
+      }
+    </style>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel"> /* 此处一定要写babel */
+      /* 
+      jsx语法规则：
+        1. 定义虚拟DOM时，JSX不是字符串，不要加引号
+        2. 标签中混入js表达式时要用{}
+        3. 样式的类名指定不要用class，要用className
+        4. 内联样式，要用style={{key: value}}
+        5. 虚拟DOM只能有一个根标签
+        6. 标签必须闭合
+        7. 标签首字母
+          - 若小写字母开头，则将该标签转为html中的同名元素
+          - 若大写字母开头，react就去渲染对应的组件，若组件没有定义，就报错
+        8. 如果表达式是空值、布尔值、undefined，将不会显示
+      */
+
+      const myId = 'TitlE'
+      const myData = 'HellO, CoderLeE'
+
+      //1.创建虚拟DOM
+      const VDOM = (
+        <div>
+          <h2 className="title" id={myId.toLowerCase()}>
+            <span style={{color: 'white', fontSize: '24px'}}>
+              {myData.toLowerCase()}
+            </span>
+          </h2>
+          <h2 className="title" id={myId.toUpperCase()}>
+            <span style={{color: 'white', fontSize: '24px'}}>
+              {myData.toUpperCase()}
+            </span>
+          </h2>
+          <input type="text" />
+        </div>
+      )
+      //2.渲染虚拟DOM到页面
+      ReactDOM.createRoot(document.getElementById('root')).render(VDOM)
+
+    </script>
+  </body>
+</html>

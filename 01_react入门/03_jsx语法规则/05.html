@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>jsx代码与表达式</title>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel"> /* 此处一定要写babel */
+      /* 
+      jsx表达式与语句(代码)的区别：
+        1. 表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
+          - a
+          - a+b
+          - demo(1)
+          - arr.map()
+          - function test() {}
+        2. 语句：一段代码，不会产生值，不能放在需要值的地方
+          - if(){}
+          - for(){}
+          - switch(){}
+      */
+
+      const data = ['Agural', 'React', 'Vue']
+
+      //1.创建虚拟DOM
+      const VDOM = (
+        <div>
+          <h2>前端框架集合</h2>
+          <ul>
+            {
+              data.map((item, index) => {
+                return <li key={'data_' + index}>{item}</li>
+              })
+            }
+          </ul>
+        </div>
+      )
+      //2.渲染虚拟DOM到页面
+      ReactDOM.createRoot(document.getElementById('root')).render(VDOM)
+
+    </script>
+  </body>
+</html>

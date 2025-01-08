@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_类的基本知识</title>
+</head>
+<body>
+  
+</body>
+<script type="text/javascript">
+  /* 
+    总结：
+      1.类中的构造器不是必须要写的，要对实例进行一些初始化的操作，如添加指定属性时才写。
+      2.如果A类继承了B类，且A类中写了构造器，那么A类构造器中的super是必须要调用的。
+      3.类中所定义的方法，都放在了类的原型对象上，供实例去使用。
+  */
+
+  class Person {
+    // 构造器方法
+    constructor(name, age) {
+      // 构造器中的this是谁？—— 类的实例对象
+      this.name = name
+      this.age = age
+    }
+    // 一般方法
+    speek() {
+      // speak方法放在了哪里？——类的原型对象上，供实例使用
+			// 通过Person实例调用speak时，speak中的this就是Person实例
+      console.log(`大家好，我是${this.name}，今年${this.age}岁`)
+    }
+  }
+
+  const p1 = new Person('coderlee', 33)
+  console.log(p1)
+  p1.speek()
+
+  // 继承类
+  class Employee extends Person {
+    constructor(name, age, compony) {
+      super(name, age)
+      this.compony = compony
+    }
+    // 重写从父类继承过来的方法
+    speek() {
+      console.log(`大家好，我是${this.name}，今年${this.age}岁，在${this.compony}上班`)
+    }
+    work() {
+      //work方法放在了哪里？——类的原型对象上，供实例使用
+			//通过Employee实例调用work时，work中的this就是Employee实例
+      console.log('我在工作')
+    }
+  }
+
+  const e1 = new Employee('coderlee', 33, 'wfxx')
+  console.log(e1)
+  e1.speek()
+  e1.work()
+
+  class Car {
+    constructor(name,price){
+      this.name = name
+      this.price = price
+      // this.wheel = 4
+    }
+    //类中可以直接写赋值语句,如下代码的含义是：给Car的实例对象添加一个属性，名为a，值为1
+    a = 1
+    wheel = 4
+    // 静态属性
+    static demo = 100
+  }
+  const c1 = new Car('奔驰c63',199)
+  console.log(c1);
+  console.log(c1.a);
+  console.log(c1.wheel);
+  console.log(Car.demo);
+
+</script>
+</html>

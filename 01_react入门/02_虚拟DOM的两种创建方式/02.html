@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>使用js</title>
+    <!-- 引入react核心库 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript">
+      /* 对比01.html，二者之间的区别就是是否使用jsx的区别 */
+      /*
+      * React.createElement()
+      *   - 用来创建一个React元素
+      *   - 参数：
+      *        1.元素的名称（html标签必须小写）
+      *        2.标签中的属性
+      *           - class属性需要使用className来设置
+      *           - 在设置事件时，属性名需要修改为驼峰命名法
+      *       3.元素的内容（子元素）
+      *   - 注意点：
+      *       React元素最终会通过虚拟DOM转换为真实的DOM元素
+      *       React元素一旦创建就无法修改，只能通过新创建的元素进行替换
+      * */
+      //1.创建虚拟DOM
+      const VDOM = React.createElement('h1', {id: 'title'}, React.createElement('span', null, 'hello, coderlee'))
+      //2.渲染虚拟DOM到页面
+      // ReactDOM.render(VDOM, document.getElementById('root'))
+      ReactDOM.createRoot(document.getElementById('root')).render(VDOM)
+      /* 使用JS和JSX都可以创建虚拟DOM，但是可以看出JS创建虚拟DOM比较繁琐，尤其是标签如果很多的情况下，所以还是比较推荐使用JSX来创建。 */
+    </script>
+  </body>
+</html>
