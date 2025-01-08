@@ -2,7 +2,9 @@
 
 # dependencies
 ./atguigu_react_allin/03_react_staging/build
+atguigu_react_allin/03_react_staging/build
 ./atguigu_react_allin/03_react_staging/node_modules
+atguigu_react_allin/03_react_staging/node_modules
 /.pnp
 .pnp.js
 
